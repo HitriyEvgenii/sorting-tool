@@ -5,10 +5,10 @@ import kotlin.math.max
 fun main(args: Array<String>) {
     args ?: "word"
     when {
-        args[0] == "-sortIntegers" -> sortIntegers()
-        args[1] == "word" -> typeWord()
-        args[1] == "long" -> typeInt()
-        args[1] == "line" -> typeLine()
+        args.contains("-sortIntegers") -> sortIntegers()
+        args.contains("word") -> typeWord()
+        args.contains("long") -> typeInt()
+        args.contains("line") -> typeLine()
     }
 
     //typeLine()
@@ -55,4 +55,16 @@ fun typeLine() {
     println("(${maxCount} time(s), ${((maxCount.toDouble() * 100) / numbersList.size).toInt()}%).")
 }
 
-fun sortIntegers() {}
+fun sortIntegers() {
+    val scanner = Scanner(System.`in`)
+    val numbersList = emptyList<Int>().toMutableList()
+    while (scanner.hasNext()) {
+        val line = scanner.nextLine().split("\\s+".toRegex())
+        numbersList += line.map {it.toString().toInt()}
+    }
+    numbersList.sort()
+
+    println("Total numbers: ${numbersList.size}.")
+    println("Sorted data: ${numbersList.joinToString(" ")}")
+}
+
