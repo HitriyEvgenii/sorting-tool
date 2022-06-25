@@ -5,6 +5,7 @@ import kotlin.math.max
 fun main(args: Array<String>) {
     args ?: "word"
     when {
+        args[0] == "-sortIntegers" -> sortIntegers()
         args[1] == "word" -> typeWord()
         args[1] == "long" -> typeInt()
         args[1] == "line" -> typeLine()
@@ -53,3 +54,5 @@ fun typeLine() {
     println(maxValue)
     println("(${maxCount} time(s), ${((maxCount.toDouble() * 100) / numbersList.size).toInt()}%).")
 }
+
+fun sortIntegers() {}
